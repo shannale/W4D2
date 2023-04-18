@@ -4,15 +4,25 @@ require_relative "employee.rb"
 class Manager < Employee
     attr_reader :employees
     
-    def initialize(name,title,salary,boss = nil)
-        super(name,title,salary,boss)
+    def initialize(name, title, salary, boss = nil)
+        super(name, title, salary, boss)
         @employees = []
     end 
 
-    def total_employees
-        @employees << self if self.boss.nil?
+    # def total_employees
+    #     @employees << self if self.boss.nil?
+    # end
+
+    def add_employee(grunt)
+
     end
 
+    def total total_salaries
+        @employees.inject(0) do |sum, employee|
+            salary = employee.salary
+            sum += salary
+        end
+    end
 
     def bonus(multiplier)
         total_salaries * multiplier
