@@ -1,11 +1,17 @@
+require_relative 'piece.rb'
+
 class Board
 
 
     attr_reader :rows
 
     def initialize
-        @rows = Array.new(8) {Array.new(8)}
-        @null_piece = NullPiece.new
+        @null_piece = NullPiece.instance
+        black =  Array.new(2) {Array.new(8){Piece.new(:K)}}
+        blank = Array.new(4) {Array.new(8)}
+        white = Array.new(2) {Array.new(8){Piece.new(:R)}}
+        @rows = black + blank + white 
+        
     end
 
     def [](pos)
@@ -13,13 +19,13 @@ class Board
         @rows[r][c]
     end
 
-    def []=pos(pos, value)
+    def []=(pos, value)
         r, c = pos
         @rows[r][c] = value
     end
 
     def move_piece(color, start_pos, end_pos)
-
+        self[start_pos] 
     end
 
     def valid_pos?(pos)
