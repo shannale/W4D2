@@ -3,7 +3,7 @@ require_relative 'slideable'
 
 class Rook < Piece
   attr_reader :symbol
-  # include Slideable
+  include Slideable
 
   def symbol
     '♜'
@@ -12,8 +12,6 @@ class Rook < Piece
   protected
 
   def move_dirs
-    # HORIZONTAL_DIRS
-    # return the directions in which a rook can move
-    # a rook can move horizontally (across rows and columns)
+    HORIZONTAL_DIRS
   end
 end
