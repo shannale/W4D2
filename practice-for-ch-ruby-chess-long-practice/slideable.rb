@@ -16,8 +16,11 @@ module Slideable
   
     # should return an array of places a Piece can move to
     def moves
-      moves = []
       # create array to collect moves
+      moves = []
+
+      move_dirs.each do 
+      
   
       # iterate over each of the directions in which a slideable piece can move
         # use the Piece subclass' `#move_dirs` method to get this info
@@ -32,7 +35,6 @@ module Slideable
     private
   
     def move_dirs
-      # subclass implements this
       raise NotImplementedError # this only executes if not implemented
     end
   
@@ -41,7 +43,27 @@ module Slideable
     # the given direction is represented by two args, the combination of a dx and dy
     def grow_unblocked_moves_in_dir(dx, dy)
       # create an array to collect moves
-  
+      moves = []
+
+      x, y = self[pos]
+      x, y = [new_pos]
+
+      
+      loop do 
+        x, y = x + dx, y + dy
+        poss_pos = [x, y]
+
+        if board.empty?(poss_pos) 
+          moves << poss_pos
+        else 
+          self.board[poss_pos].color != self.color
+          moves << poss_pos
+        end
+
+        moves
+      end
+
+
       # get the piece's current row and current column
   
       # in a loop:
@@ -56,6 +78,8 @@ module Slideable
     end
   end
   
+
+  #if spot is emoty or piece of opposite color
   
   
   

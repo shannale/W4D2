@@ -6,17 +6,17 @@ class Queen < Piece
 
 
   def symbol
-    '♛'.colorize(color)
+    '♛'
   end
 
-  def move_dirs
-    HORIZONTAL_DIRS + DIAGONAL_DIRS
-  end 
+end 
 
-  protected
+protected
 
-  def move_dirs
-  end 
+def move_dirs
+  HORIZONTAL_DIRS + DIAGONAL_DIRS
+end
+
 
   # def move_dirs
   #   # return the directions in which a queen can move

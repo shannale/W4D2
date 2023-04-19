@@ -2,7 +2,7 @@ require_relative 'piece.rb'
 
 class Board
 
-    attr_reader :rows, :null_piece
+    attr_reader :rows 
 
     def initialize
         @null_piece = NullPiece.instance
@@ -26,9 +26,9 @@ class Board
             else 
                 color ='white'
             end
-
             (0..7).to_a.each do |j|
                 pos = [i,j]
+
                 if i == 1 || i == 6
                     self[pos] = Pawn.new(self, color, pos)
                 elsif j == 0 || j == 7
@@ -38,30 +38,42 @@ class Board
                 elsif j == 2 || j == 5 
                     self[pos] = Bishop.new(self, color, pos)
                 elsif j == 3 
-                    self[pos] = King.new(self, color, pos)
+                    self[pos] = Queen.new(self, color, pos)
                 else
-                    self[pos] = Queen.new(self, color,pos)
+                    self[pos] = King.new(self, color,pos)
                 end
             end
         end
 
+        self.print
     end
 
+    def print
+        @rows.each do |row|
+            puts row.join
+        end
+    end
 
     
-    def move_piece(color, start_pos=nil, end_pos)
-        raise "no piece at start" if start_pos.nil? || self[pos] == end_pos
-        self[start_pos] 
+    def move_piece(color, start_pos, end_pos)
+        raise "no piece at start" if start_pos.empty?
+
+        piece = self[start_pos]
+
         
     end
 
     def valid_pos?(pos)
-
+        pos.all? {|a| a.between?(0,7)}
     end
 
-    def add_piece(piece, pos)
-
+    def empty?(pos)
+        self[pos].empty?
     end
+
+    # def add_piece(piece, pos)
+
+    # end
 
     def checkmate?(color)
 
@@ -75,9 +87,9 @@ class Board
 
     end
 
-    def pieces
+    # def pieces
 
-    end
+    # end
 
     def dup
 
@@ -95,6 +107,4 @@ class Board
     
 end
 
-# b = Board.new
-#p b
 
