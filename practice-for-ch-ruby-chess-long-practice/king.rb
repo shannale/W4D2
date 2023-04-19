@@ -11,6 +11,7 @@ class King < Piece
   protected
 
   def move_diffs
+    KING_DIRS
     # return an array of diffs representing where a King can step to
   end
 end

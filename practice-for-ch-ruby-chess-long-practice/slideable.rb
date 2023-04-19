@@ -1,37 +1,22 @@
 module Slideable
 
-    # HORIZONTAL_DIRS stores an array of horizontal directions
-      # when a piece moves in a given direction, its row and/or its column should increment by some value
-      # ex: A piece starts at position [1, 2] and it moves horizontally to the right
-        # its position changes to [1,3]
-        # the row increases by 0 and the column increases by 1
-    HORIZONTAL_DIRS = [
-      [:dx, :dy], # left
-      [0, 1], # right
-      [:dx, :dy], # up (vertical)
-      [:dx, :dy]  # down (vertical)
-    ].freeze
+    HORIZONTAL_DIRS = [[1,0], [-1,0], [0, 1], [0,-1]].freeze
   
-    # DIAGONAL_DIRS stores an array of diagonal directions
-    DIAGONAL_DIRS = [
-      [:dx, :dy], # up + left
-      [:dx, :dy], # up + right
-      [:dx, :dy], # down + left
-      [:dx, :dy]  # down + right
-    ].freeze
+    DIAGONAL_DIRS = [[-1, -1], [-1, 1], [1, -1],[1, 1]].freeze
   
   
     def horizontal_dirs
-      # getter for HORIZONTAL_DIRS
+      HORIZONTAL_DIRS
     end
   
     def diagonal_dirs
-      # getter for DIAGONAL_DIRS
+      DIAGONAL_DIRS
     end
   
   
     # should return an array of places a Piece can move to
     def moves
+      moves = []
       # create array to collect moves
   
       # iterate over each of the directions in which a slideable piece can move

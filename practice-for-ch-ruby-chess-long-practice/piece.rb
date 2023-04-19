@@ -1,16 +1,21 @@
 class Piece
 
-   attr_reader :color, :board, :piece
+   attr_reader :color, :board, :position
 
-    def initialize (symbol)
-        @color = symbol
+    def initialize (board, color, position)
+        @color = color
         @board = board
-        @pos = []
+        @position = position
     end
 
     def to_s
         " #{@color} "
     end
+
+    def empty?
+    end 
+
+    
     
     
 end
