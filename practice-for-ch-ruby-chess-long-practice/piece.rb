@@ -4,10 +4,13 @@ class Piece
 
     def initialize (symbol)
         @color = symbol
-        # @board = board
-        # @pos = []
+        @board = board
+        @pos = []
     end
 
+    def to_s
+        " #{@color} "
+    end
     
     
 end

@@ -6,9 +6,9 @@ class Board
     attr_reader :rows
 
     def initialize
-        @null_piece = NullPiece.instance
-        black =  Array.new(2) {Array.new(8){Piece.new(:K)}}
-        blank = Array.new(4) {Array.new(8, @null_piece)}
+        # @null_piece = NullPiece.instance
+        black =  Array.new(2) {Array.new(8){King.new("♚").to_s}}
+        blank = Array.new(4) {Array.new(8)}
         white = Array.new(2) {Array.new(8){Piece.new(:R)}}
         @rows = black + blank + white 
         
@@ -24,8 +24,10 @@ class Board
         @rows[r][c] = value
     end
 
-    def move_piece(color, start_pos, end_pos)
+    def move_piece(color, start_pos=nil, end_pos)
+        raise "no piece at start" if start_pos.nil? || self[pos] == end_pos
         self[start_pos] 
+        
     end
 
     def valid_pos?(pos)
