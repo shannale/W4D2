@@ -1,6 +1,8 @@
 require_relative 'piece'
 require_relative 'slideable'
 
+
+
 class Queen < Piece
   include Slideable
 
@@ -8,6 +10,11 @@ class Queen < Piece
   def symbol
     '♛'.colorize(color)
   end
+
+  def move_dirs
+    [[2,2], [1,1], [4,2], [4,4], [2,4], [2,3], [3,2], [3,1],
+    [3,0],[4,3],[5,3],[6,3],[3,4],[3,5],[3,6]]
+  end 
 
   protected
 
@@ -18,4 +25,5 @@ class Queen < Piece
 end
 
 
-# Note: you can invoke methods from the piece from within the module methods, and vice versa. It is a two way street!
+# Note: you can invoke methods from the piece from within the module methods,
+# and vice versa. It is a two way street!

@@ -8,7 +8,7 @@ class Board
     def initialize
         @null_piece = NullPiece.instance
         black =  Array.new(2) {Array.new(8){Piece.new(:K)}}
-        blank = Array.new(4) {Array.new(8)}
+        blank = Array.new(4) {Array.new(8, @null_piece)}
         white = Array.new(2) {Array.new(8){Piece.new(:R)}}
         @rows = black + blank + white 
         
