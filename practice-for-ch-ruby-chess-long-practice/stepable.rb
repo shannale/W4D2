@@ -20,9 +20,8 @@ module Stepable
   [-1, -2],
   [-2, -1] ].freeze
 
+
   def moves(dirs)
-
-
 
   end
   
