@@ -57,10 +57,11 @@ class Board
     
     def move_piece(color, start_pos, end_pos)
         raise "no piece at start" if start_pos.empty?
+        piece = self[end_pos]
+        if self.color != piece.color 
+            piece[start_pos] = piece[end_pos]
+        end 
 
-        piece = self[start_pos]
-
-        
     end
 
     def valid_pos?(pos)
@@ -71,11 +72,8 @@ class Board
         self[pos].empty?
     end
 
-    # def add_piece(piece, pos)
-
-    # end
-
     def checkmate?(color)
+        
 
     end
 
@@ -84,12 +82,11 @@ class Board
     end
     
     def find_king?(color)
+        # piece = self[pos]
+        # if piece 
 
     end
 
-    # def pieces
-
-    # end
 
     def dup
 
@@ -103,7 +100,12 @@ class Board
     private
 
     attr_reader :null_piece
-    
+     # def pieces
+
+    # end
+     # def add_piece(piece, pos)
+
+    # end
     
 end
 

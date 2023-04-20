@@ -1,8 +1,8 @@
 module Stepable
   
   KING_DIRS = 
-  [[1,0],
-  [-1,0]
+  [ [1,0],
+  [-1,0],
   [0,1],
   [0,-1], 
   [1,1],
@@ -21,31 +21,33 @@ module Stepable
   [-2, -1] ].freeze
 
 
-  def moves(dirs)
+
+  def moves(dirs) # dirs = [dx,dy]
+    moves = [] 
+    x , y = self[pos]
+    x , y = x + dx, y + dy 
+    move_diffs.each do |new_pos|
+      if board.empty?(new_pos) 
+        moves << new_pos 
+      else 
+        self.board[new_pos].color != self.color 
+      end 
+    end 
+    moves 
 
   end
   
-    private
+  private
   
-    def move_diffs
-      # subclass implements this
-      raise NotImplementedError
-    end
+  def move_diffs
+    raise NotImplementedError
   end
+end 
+
   
   
   
   
   
-  # x, y = @pos
-  # x += dirs[0]
-  # y += dirs[1]
-  # temp_moves = []
-  # if (x.between?(0,7) && y.between?(0,7))
-  #     if board[@pos].is_a?(NullPiece) 
-  #         temp_moves << @pos
-  #     elsif self.color != board[@pos].color
-  #         temp_moves << @pos
-  #     end
-  # end
-  # Note: you can invoke methods from the piece from within the module methods, and vice versa. It is a two way street!
+
+  
